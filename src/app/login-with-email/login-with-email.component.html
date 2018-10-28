@@ -1,0 +1,19 @@
+<mat-dialog-content>
+<form [formGroup]="loginForm" id='loginForm'>
+  <mat-form-field class="full-width">
+    <input  matInput  reqired class="form-control" formControlName="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+      name='email'>
+      <mat-error *ngIf="loginForm.controls['email'].hasError('required')" >
+        Email is <strong>required</strong>
+      </mat-error>
+  </mat-form-field>
+  <mat-form-field class="full-width">
+    <input matInput type="password" class="form-control"  formControlName="password" id="exampleInputPassword1" placeholder="Password" name='password'
+      >
+  </mat-form-field>
+
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="submit" form='loginForm' class="btn btn-primary" (click)="login()">Login</button>
+</mat-dialog-actions>
