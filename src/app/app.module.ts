@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 import {
   MatToolbarModule,
@@ -24,17 +25,27 @@ import {
   MatInputModule,
   MatSelectModule,
   MatRadioModule,
-  MatDialogModule
+  MatDialogModule,
+  MatTabsModule,
+  MatSlideToggleModule
 } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
 import { AddressComponent } from './address/address.component';
-import { ReactiveFormsModule, FormControl, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { LoginWithEmailComponent } from './login-with-email/login-with-email.component';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ItemListerComponent } from './item-lister/item-lister.component';
+import { AboutComponent } from './about/about.component';
+import { SkillComponent } from './skill/skill.component';
+import { NameComponent } from './name/name.component';
+import { DDialogComponent } from './d-dialog/d-dialog.component';
+
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +55,12 @@ import { AngularFirestore } from '@angular/fire/firestore';
     AddressComponent,
     PageNotFoundComponent,
     LoginComponent,
-    LoginWithEmailComponent
+    LoginWithEmailComponent,
+    ItemListerComponent,
+    AboutComponent,
+    SkillComponent,
+    NameComponent,
+    DDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,8 +68,11 @@ import { AngularFirestore } from '@angular/fire/firestore';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     ToastModule,
+    ConfirmDialogModule,
     LayoutModule,
     FormsModule,
+    NgbModal,
+
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
@@ -66,12 +85,16 @@ import { AngularFirestore } from '@angular/fire/firestore';
     MatSelectModule,
     MatRadioModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule,
+    MatSlideToggleModule
   ],
   entryComponents: [
-    LoginWithEmailComponent
+    LoginWithEmailComponent,
+    SkillComponent,
+    DDialogComponent
   ],
-  providers: [MessageService, ConfirmationService, AngularFireAuth, AngularFirestore],
+  providers: [MessageService, ConfirmationService, AngularFireAuth, AngularFirestore, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

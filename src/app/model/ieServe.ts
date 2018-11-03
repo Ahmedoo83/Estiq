@@ -12,3 +12,7 @@ export class Eserve implements IeServe {
     return this.path;
   }
 }
+export interface IIlistItem extends IeServe {
+  icon?: string;
+  color?: string;
+}

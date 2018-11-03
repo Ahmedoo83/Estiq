@@ -1,0 +1,36 @@
+<form #myform='ngForm' name='myForm'>
+  <mat-tab-group>
+    <mat-tab label="English">
+      <mat-form-field>
+        <input matInput required type='text' placeholder="Name" name='ename' [(ngModel)]="nname.e_name" #ename>
+      </mat-form-field>
+      <mat-error *ngIf='ename.invalid && (ename.dirty || ename.touched)'>
+        * Name is required
+      </mat-error>
+      <div *ngIf='!nameOnly'>
+      <mat-form-field>
+        <input matInput required type='text' placeholder="Name" name='eDescription' [(ngModel)]='ddescription.e_description'  #edescription>
+      </mat-form-field>
+      <mat-error *ngIf='edescription.invalid && (edescription.dirty || edescription.touched)'>
+        * Description is required
+      </mat-error>
+      </div>
+    </mat-tab>
+    <mat-tab label="Arabic">
+      <mat-form-field>
+        <input matInput required type='text' placeholder="Name" name='aname' [(ngModel)]="nname.a_name" #aname>
+      </mat-form-field>
+      <mat-error *ngIf='aname.invalid && (aname.dirty || aname.touched)'>
+        * Name is required
+      </mat-error>
+      <div *ngIf='!nameOnly'>
+      <mat-form-field>
+        <input matInput required type='text' placeholder="Name" name='adescription' [(ngModel)]='ddescription.a_description'  #adescription>
+      </mat-form-field>
+      <mat-error *ngIf='adescription.invalid && (adescription.dirty || adescription.touched)'>
+        * Description is required
+      </mat-error>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</form>
