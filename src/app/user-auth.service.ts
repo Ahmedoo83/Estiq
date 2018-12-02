@@ -1,10 +1,10 @@
 import { EServeDataService } from './e-serve-data.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { MessageService } from 'primeng/api';
 import { switchMap } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { User } from './model/user';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ import { User } from './model/user';
 export class UserAuthService {
   loggedin: boolean;
   user: Observable<User>;
-  constructor(public afAuth: AngularFireAuth, private messageService: MessageService, private esData: EServeDataService) {
+  constructor(public afAuth: AngularFireAuth, private esData: EServeDataService, public snackBar: MatSnackBar) {
     this.afAuth.auth.onAuthStateChanged(user => {
       if (user) {
         this.loggedin = true;
@@ -35,27 +35,24 @@ export class UserAuthService {
 
   login(email: string, pass: string) {
     const pr = this.afAuth.auth.signInWithEmailAndPassword(email, pass)
-    .then(user => {
-      console.log(user.user.email);
-      this.loggedin = true;
-      this.messageService.add({ severity: 'success', summary: 'Logged in Successfully', detail: 'You have logged in sucessfully.' ,
-       life : 2000 });
-    }).catch(error => {
-      this.messageService.add({ severity: 'error', sticky: true, summary: 'loggin Not Successful', detail: error , life : 2000 });
-    });
+      .then(user => {
+        console.log(user.user.email);
+        this.loggedin = true;
+        this.esData.openSnack('You have logged in sucessfully.', 'success');
+      }).catch(error => {
+        this.esData.openSnack('Login Not Successful: ' + error, 'error');
+      });
     return pr;
   }
   logout() {
     this.afAuth.auth.signOut()
       .then(cred => {
         this.loggedin = false;
-        this.messageService.add({ severity: 'success', summary: 'Logout Successfully', detail: 'You have logged out sucessfully.' ,
-        life : 2000});
+        this.esData.openSnack('You have logged out sucessfully.', 'success');
       })
       .catch(error => {
         this.loggedin = true;
-        this.messageService.add({ severity: 'error', sticky: true, summary: 'Logout Not Successful', detail: error ,
-        life : 2000});
+        this.esData.openSnack('Logout Not Successful: ' + error, 'error');
       });
   }
   isLoggedin() {
@@ -76,15 +73,15 @@ export class UserAuthService {
 
   }
   signupWEmailandPassword(email: string, pass: string) {
-    const us = this.afAuth.auth.createUserWithEmailAndPassword(email, pass );
+    const us = this.afAuth.auth.createUserWithEmailAndPassword(email, pass);
     us
       .then(user => {
         const appUser = new User();
         this.setUserDate(appUser.setUserfromFirebase(user.user));
-        this.messageService.add({ severity: 'success', summary: 'Signup Successfully', detail: 'You have signed up sucessfully.' });
-      } )
+        this.esData.openSnack('You have signed up sucessfully.', 'success');
+      })
       .catch(error => {
-        this.messageService.add({ severity: 'error', sticky: true, summary: 'Signup Was Not Successful', detail: error });
+        this.esData.openSnack('Signup Was Not Successful: ' + error, 'error');
       });
 
   }

@@ -5,7 +5,8 @@
     <mat-nav-list>
       <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="router-link-active">Dashboard</a>
       <a mat-list-item [routerLink]="['/address']" routerLinkActive="router-link-active">Address</a>
-      <a mat-list-item [routerLink]="['/about']" routerLinkActive="router-link-active" >About</a>
+      <a mat-list-item [routerLink]="['/skill']" routerLinkActive="router-link-active" >Skill</a>
+      <a mat-list-item [routerLink]="['/skillLevel']" routerLinkActive="router-link-active" >Skill Level</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -19,7 +20,8 @@
     </mat-toolbar>
     <!-- Add Content Here -->
     <p-toast [showTransitionOptions]="'200ms'" [hideTransitionOptions]="'250ms'"></p-toast>
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425" appendTo="body"> </p-confirmDialog>
     <router-outlet></router-outlet>
-    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425"> </p-confirmDialog>
+
   </mat-sidenav-content>
 </mat-sidenav-container>

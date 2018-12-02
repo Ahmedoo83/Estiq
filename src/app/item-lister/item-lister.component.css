@@ -11,5 +11,13 @@
   align-self: auto;
 }
 .grid-container {
-  margin: 20px;
+  margin: 10px;
+}
+.dia {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.ui-dialog{
+  margin-left: 5px;
+  margin-right: 5px;
 }

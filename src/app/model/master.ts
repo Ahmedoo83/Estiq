@@ -74,3 +74,9 @@ export enum COLOR {
   WARNING = 'warning',
   DANGER = 'danger'
 }
+
+export interface City extends IeServe { id: string; cityID: number;  name: NName; provinceId: number; path: string; }
+
+export interface Provincy extends IeServe { id: string; name: NName; provinceId: number; path: string; }
+
+export interface Neighborhood extends IeServe { id: string; cityID: number; name: NName; neCoordinates: string; swCoordinates: string; path: string; }

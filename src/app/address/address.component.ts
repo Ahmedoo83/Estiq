@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Address } from './../model/address';
+import { Component, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +7,8 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.css'],
 })
-export class AddressComponent {
+export class AddressComponent implements OnChanges {
+@Input() address: Address;
   addressForm = this.fb.group({
     company: null,
     firstName: [null, Validators.required],
@@ -86,7 +88,15 @@ export class AddressComponent {
   ];
 
   constructor(private fb: FormBuilder) {}
-
+  ngOnChanges(changes: SimpleChanges): void {
+    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
+    // Add '${implements OnChanges}' to the class.
+    this.addressForm.patchValue({
+      address: this.address.address,
+      city: this.address.city,
+      postalCode: this.address.postCode
+    });
+  }
   onSubmit() {
     alert('Thanks!');
   }

@@ -1,6 +1,5 @@
-<p>
-  about works!
-</p>
-<app-item-lister path='skills' >
-  <app-skill></app-skill>
+<app-item-lister path='skills' (selectedItem)='select($event, item._mode)' #item='appLister'>
+  <!-- <app-skill [selectedskill]='item._selectedItem' (saveAndClose)='item.save($event)'></app-skill> -->
 </app-item-lister>
+
+<app-data-migration></app-data-migration>>

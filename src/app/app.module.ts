@@ -12,6 +12,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {DialogModule} from 'primeng/dialog';
+
 
 import {
   MatToolbarModule,
@@ -27,7 +29,8 @@ import {
   MatRadioModule,
   MatDialogModule,
   MatTabsModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatSnackBarModule
 } from '@angular/material';
 import { AngularFireModule } from '@angular/fire';
 import { AdminDashComponent } from './admin-dash/admin-dash.component';
@@ -43,8 +46,13 @@ import { AboutComponent } from './about/about.component';
 import { SkillComponent } from './skill/skill.component';
 import { NameComponent } from './name/name.component';
 import { DDialogComponent } from './d-dialog/d-dialog.component';
+import { SkilLevelComponent } from './skil-level/skil-level.component';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { SkillLevelMgmtComponent } from './skill-level-mgmt/skill-level-mgmt.component';
+import { CandidateComponent } from './candidate/candidate.component';
+import { DataMigrationComponent } from './data-migration/data-migration.component';
 
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+// import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -60,7 +68,12 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     AboutComponent,
     SkillComponent,
     NameComponent,
-    DDialogComponent
+    DDialogComponent,
+    SkilLevelComponent,
+    ConfirmationDialogComponent,
+    SkillLevelMgmtComponent,
+    CandidateComponent,
+    DataMigrationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,9 +82,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     AngularFireModule.initializeApp(environment.firebase),
     ToastModule,
     ConfirmDialogModule,
+    DialogModule,
     LayoutModule,
     FormsModule,
-    NgbModal,
+    // NgbModal,
 
     MatToolbarModule,
     MatButtonModule,
@@ -87,12 +101,15 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     MatDialogModule,
     MatTabsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule
   ],
   entryComponents: [
     LoginWithEmailComponent,
     SkillComponent,
-    DDialogComponent
+    DDialogComponent,
+    ConfirmationDialogComponent,
+    SkilLevelComponent
   ],
   providers: [MessageService, ConfirmationService, AngularFireAuth, AngularFirestore, ConfirmationService],
   bootstrap: [AppComponent]

@@ -1,9 +1,9 @@
 <div class="grid-container">
 <mat-card>
 <mat-nav-list *ngIf='items'>
-  <mat-list-item *ngFor='let item of items | async' >
+  <mat-list-item *ngFor='let item of items | async'  >
       <mat-icon matListIcon *ngIf='item?.icon'>{{item.icon}}</mat-icon>
-     <a matLine (click)='selected(item); addDialog.showDialog()'>  {{item.name.e_name}} - {{item.name.a_name}}</a>
+     <a mat-line (click)='selected(item)'>  {{item.name.e_name}} - {{item.name.a_name}}</a>
      <button mat-icon-button color="warn" (click)='delete(item)' title='Delete'>
         <mat-icon>delete</mat-icon>
      </button>
@@ -13,6 +13,10 @@
 </mat-card>
 <button mat-mini-fab color="warn" (click)='add()' title='Add' class='myfloat'><mat-icon>add</mat-icon></button>
 </div>
-<app-d-dialog #addDialog='appDialog'>
+<!--
+<p-dialog [(visible)]="display" appendTo="body" class='dia'>
+  <p-header>
+      {{path}}
+  </p-header>
   <ng-content></ng-content>
-</app-d-dialog>
+</p-dialog> -->
